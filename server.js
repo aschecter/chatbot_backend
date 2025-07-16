@@ -27,11 +27,17 @@ app.post('/chat', async (req, res) => {
   try {
     const completion = await openai.chat.completions.create({
       model: 'gpt-4.1-mini',                              // or whichever model you test
-      messages: [
+      input: [
         {role: 'system', content: buildSystemPrompt(variant)},
         ...messages,
       ],
-      temperature: 0.7,                                  // [[ TUNE ]]
+      
+      reasoning: {},
+      tools: [],
+      temperature: 1,
+      max_output_tokens: 2048,
+      top_p: 1,
+      store: true
     });   // :contentReference[oaicite:0]{index=0}
 
     // TODO: persist {messages, variant, meta, reply: completion.choices[0]} to your DB/file
