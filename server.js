@@ -20,20 +20,6 @@ function buildSystemPrompt(variant) {
   return 'You are a helpful assistant.';
 }
 
-async function send() {
-  // ... existing code ...
-
-  try {
-    const res = await fetch(backend, { /* … */ });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const data = await res.json();
-    placeholder.textContent = data.reply;
-  } catch (err) {
-    console.error(err);
-    placeholder.textContent = '⚠️ error contacting server';
-  }
-}
-
 app.post('/chat', async (req, res) => {
   const {messages, variant, meta} = req.body;           // messages = [{role,content}, …]
   try {
