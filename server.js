@@ -4,17 +4,8 @@ import express from 'express';
 import cors from 'cors';
 import OpenAI from 'openai';
 
-const app = express()
-  .use(express.json());   // body-parser
 
-/* 🔽  CORS middleware goes here — runs on every request */
-app.use(
-  cors({
-    origin: '*',                // open to any front-end; restrict later if you wish
-    methods: ['POST', 'OPTIONS'],
-    allowedHeaders: ['Content-Type'],
-  }),
-);
+const app = express().use(cors()).use(express.json());
 app.options('*', cors());
 
 const openai = new OpenAI({
