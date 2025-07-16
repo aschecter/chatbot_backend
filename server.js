@@ -6,7 +6,6 @@ import OpenAI from 'openai';
 
 
 const app = express().use(cors()).use(express.json());
-app.options('*', cors());
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,   // put this in a .env file, never hard-code
