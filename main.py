@@ -61,7 +61,7 @@ async def chat(req: ChatRequest):
     """Main endpoint hit by the Qualtrics widget."""
     try:
         completion = await openai.chat.completions.create(
-            model="gpt-4o-mini",           # or whichever model you plan to test
+            model="gpt-4.1-mini",           # or whichever model you plan to test
             messages=[
                 {"role": "system", "content": build_system_prompt(req.variant)},
                 *[m.dict() for m in req.messages],
