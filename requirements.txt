@@ -1,4 +1,0 @@
-fastapi==0.111.0
-uvicorn[standard]==0.29.0   # ASGI server
-python-dotenv==1.0.1
-openai==1.30.1
