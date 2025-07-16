@@ -12,7 +12,7 @@ const openai = new OpenAI({
 // ✨ experiment-specific rules go here
 function buildSystemPrompt(variant) {
   if (variant === 'A') {
-    return `You are Chatbot-A. [[ DEFINE RULES FOR VARIANT A HERE ]]`;
+    return `You are Chatbot-A. Respond to user questions`;
   }
   if (variant === 'B') {
     return `You are Chatbot-B. [[ DEFINE RULES FOR VARIANT B HERE ]]`;
@@ -24,7 +24,7 @@ app.post('/chat', async (req, res) => {
   const {messages, variant, meta} = req.body;           // messages = [{role,content}, …]
   try {
     const completion = await openai.chat.completions.create({
-      model: 'gpt-4o-mini',                              // or whichever model you test
+      model: 'gpt-4.1-mini',                              // or whichever model you test
       messages: [
         {role: 'system', content: buildSystemPrompt(variant)},
         ...messages,
